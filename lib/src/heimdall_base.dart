@@ -23,10 +23,11 @@ class Heimdall {
     _server = await createHtpServer(port);
     _server?.listen((event) {
       var paths = event.uri.path.split("/");
+      paths = paths.sublist(1);
 
       var ch = _routerMaps[paths[1]] != null ? _routerMaps[paths[1]] : null;
 
-      var selectedHandler = ch?.getHandler(paths[2]);
+      var selectedHandler = ch?.getHandler(paths);
 
       if (selectedHandler != null) {
         selectedHandler(event);

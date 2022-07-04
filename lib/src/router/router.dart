@@ -14,7 +14,7 @@ class Router {
     _routeMaps[path] = handler;
   }
 
-  RequestHandler? getHandler(String path) {
+  RequestHandler? getHandler(List<String> path) {
     return _routeMaps[path];
   }
 }
