@@ -1,6 +1,5 @@
 import "dart:io";
 
-void createHtpServer(int port) async {
-  var server = await HttpServer.bind("localhost", port);
-  server.listen((req) {});
+Future<HttpServer> createHtpServer(int port) async {
+  return HttpServer.bind("localhost", port);
 }
