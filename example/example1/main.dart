@@ -7,16 +7,27 @@ void main() {
   var router = Router();
 
   router.get("a", ((ctx) {
-    ctx.response.write("a");
-    ctx.response.close();
+    print("admin/a");
   }));
 
   router.get("b", ((ctx) {
-    ctx.response.write("b");
-    ctx.response.close();
+    print("admin/b");
+  }));
+
+  var userRouter = Router();
+
+  userRouter.get("a", ((ctx) {
+    print("user/a");
+  }));
+
+  var newRouter = Router();
+  newRouter.get("a", ((ctx) {
+    print("user/new/a");
   }));
 
   app.useRouter("admin", router);
+  app.useRouter("user", userRouter);
+  userRouter.appendRouter('new', newRouter);
 
   app.listen(3000);
   print("Server started");
