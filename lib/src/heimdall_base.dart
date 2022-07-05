@@ -20,19 +20,21 @@ class Heimdall {
   listen(int port) async {
     _server = await createHtpServer(port);
     _server?.listen((event) {
-      var selectedHandler = getHandlerForPath(event.uri.path, _handlerMap);
+      Context ctx = Context(event);
+
+      var selectedHandler = getHandlerForPath(ctx.req.url, _handlerMap);
 
       if (selectedHandler != null) {
-        selectedHandler(event);
+        selectedHandler(ctx);
       } else {
-        var paths = event.uri.path.split("/");
+        var paths = ctx.req.url.split("/");
         print(paths);
         paths = paths.sublist(1);
 
         var selectedRouter = getRouterForPath(paths[0], _routerMap);
 
         if (selectedRouter != null) {
-          selectedRouter.handle(paths, event);
+          selectedRouter.handle(paths, ctx);
         } else {
           print("Handler not foundaaa");
         }
