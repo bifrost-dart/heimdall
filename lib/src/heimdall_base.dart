@@ -13,6 +13,22 @@ class Heimdall {
 
   final Map<String, Router> _routerMap = {};
 
+  bool shouldEnableCors = false;
+
+  enableCors() {
+    shouldEnableCors = true;
+  }
+
+  _configCors(Context ctx) {
+    const corsHeaders = {
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "GET, POST, DELETE, OPTIONS",
+      "Access-Control-Allow-Headers": "*",
+    };
+
+    ctx.res.headers(corsHeaders);
+  }
+
   useRouter(String path, Router router) {
     _routerMap[path] = router;
   }
@@ -21,6 +37,8 @@ class Heimdall {
     _server = await createHtpServer(port);
     _server?.listen((event) {
       Context ctx = Context(event);
+
+      if (shouldEnableCors) _configCors(ctx);
 
       var selectedHandler = getHandlerForPath(ctx.req.url, _handlerMap);
 

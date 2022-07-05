@@ -4,6 +4,8 @@ import 'package:heimdall/src/router/router.dart';
 void main() {
   var app = Heimdall();
 
+  app.enableCors();
+
   var router = Router();
 
   router.get("a", ((ctx) {
@@ -18,6 +20,7 @@ void main() {
 
   userRouter.get("a", ((ctx) {
     print("user/a");
+    ctx.res.send({"Hello": "Helo"});
   }));
 
   var newRouter = Router();
