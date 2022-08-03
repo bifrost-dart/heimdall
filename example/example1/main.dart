@@ -12,17 +12,17 @@ void main() {
 
   var router = Router();
 
-  router.get("a", ((ctx) async {
+  router.get("a", (ctx) async {
     var content = await ctx.req
         .transform(StreamTransformer.fromHandlers(
             handleData: ((data, sink) =>
                 sink.add(new String.fromCharCodes(data)))))
         .join();
-    print(content);
+    print("Content :" + content);
     var queryParams = Uri.splitQueryString(content);
     print(queryParams);
     print("admin/a");
-  }));
+  });
 
   router.get("b", ((ctx) {
     print("admin/b");

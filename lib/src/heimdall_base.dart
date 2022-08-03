@@ -59,14 +59,14 @@ class Heimdall {
         if (selectedRouter != null) {
           selectedRouter.handle(paths, ctx);
         } else {
-          print("Handler not foundaaa");
+          print("Handler not found");
         }
       }
     });
   }
 }
 
-typedef RequestHandler = void Function(Context ctx, {NextFunction next});
+typedef RequestHandler = void Function(Context ctx);
 
 typedef NextFunction = void Function(Context ctx);
 
