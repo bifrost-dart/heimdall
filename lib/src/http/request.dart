@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:developer';
 import 'dart:io';
 import 'dart:typed_data';
 
@@ -11,6 +12,8 @@ class Request {
 
   late HttpRequest _req;
 
+  late Future<Uint8List> first;
+
   Request(HttpRequest r) {
     methode = r.method;
 
@@ -22,7 +25,7 @@ class Request {
       host = "";
     }
 
-    _req = r;
+    first = r.first;
   }
 
   transform<S>(StreamTransformer<Uint8List, S> streamTransformer) {

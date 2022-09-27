@@ -1,5 +1,3 @@
-import 'package:heimdall/heimdall.dart';
+import 'package:heimdall/core.dart';
 
-typedef Middleware = void Function(RequestHandler handler, NextFunction next);
-
-class NextFunction {}
+typedef Middleware = void Function(RequestHandler handler, dynamic next);

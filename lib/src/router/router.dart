@@ -1,4 +1,4 @@
-import 'package:heimdall/heimdall.dart';
+import 'package:heimdall/core.dart';
 import 'package:heimdall/src/context.dart';
 import 'package:heimdall/src/util/path.dart';
 import 'package:heimdall/src/util/router.dart';

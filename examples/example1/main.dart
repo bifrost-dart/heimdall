@@ -1,8 +1,6 @@
-import 'dart:async';
-import 'dart:convert';
-import 'dart:typed_data';
+import 'dart:developer';
 
-import 'package:heimdall/heimdall.dart';
+import 'package:heimdall/core.dart';
 import 'package:heimdall/src/router/router.dart';
 
 void main() {
@@ -13,15 +11,8 @@ void main() {
   var router = Router();
 
   router.get("a", (ctx) async {
-    var content = await ctx.req
-        .transform(StreamTransformer.fromHandlers(
-            handleData: ((data, sink) =>
-                sink.add(new String.fromCharCodes(data)))))
-        .join();
-    print("Content :" + content);
-    var queryParams = Uri.splitQueryString(content);
-    print(queryParams);
-    print("admin/a");
+    var res = await ctx.req.first;
+    inspect(res);
   });
 
   router.get("b", ((ctx) {

@@ -1,4 +1,4 @@
-import 'package:heimdall/heimdall.dart';
+import 'package:heimdall/core.dart';
 
 List<dynamic> flattenForever(List<dynamic> list, List<dynamic> result) {
   for (var i = 0; i < list.length; i++) {

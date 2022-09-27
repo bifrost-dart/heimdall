@@ -1,4 +1,4 @@
-import 'package:heimdall/heimdall.dart';
+import 'package:heimdall/core.dart';
 import 'package:test/test.dart';
 
 void main() {

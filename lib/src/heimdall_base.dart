@@ -68,8 +68,6 @@ class Heimdall {
 
 typedef RequestHandler = void Function(Context ctx);
 
-typedef NextFunction = void Function(Context ctx);
-
 void useMiddleware(dynamic fn) {
   var offset = 0;
   var path = "/";

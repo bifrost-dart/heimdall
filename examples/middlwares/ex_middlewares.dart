@@ -1,4 +1,4 @@
-import 'package:heimdall/heimdall.dart';
+import 'package:heimdall/core.dart';
 
 import 'add_user_middleware.dart';
 import 'user_router.dart';
